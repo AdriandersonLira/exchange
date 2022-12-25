@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <%= image_tag(
+        "logo-exchange.png", 
+        :alt => "rss feed", 
+        :width => "110", 
+        :height => "27", 
+        :class => "d-inline-block align-text-top" 
+      ) %>
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/services">Services</a>
+          </li>
+        <% if can? :read, @status %>
+          <li class="nav-item">
+            <a class="nav-link" href="/statuses">Status</a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="d-grid">
+      <% if user_signed_in? %>
+        <div class="d-inline">
+          <div class="d-inline p-2">
+            <% if current_user.name? %>
+              <%= current_user.name %>
+            <% else %>
+              <%= current_user.email %>
+            <% end %>  
+          </div>
+          <div class="d-inline p-2">
+            <%= link_to("Log out", destroy_user_session_path, method: :delete, :class => "btn btn-outline-danger btn-sm ml-5") %>
+          </div>
+        </div>
+      <% else %>
+        <div class="d-inline">
+          <div class="d-inline p-2">
+            <%= link_to("Log in", new_user_session_path, :class => "btn btn-outline-success btn-sm") %>
+          </div>
+          
+          <div class="d-inline p-2">
+            <%= link_to("Sign up", new_user_registration_path, :class => "btn btn-outline-info btn-sm") %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</nav>

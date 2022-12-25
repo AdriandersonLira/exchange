@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <p style="color: green"><%= notice %></p>
+
+  <div class="container mb-3 mt-3">
+    <%= link_to services_path do %>
+      <span>
+        <%= icon('fa-solid', 'arrow-left')%>
+        Back to services list
+        </span>
+    <% end %>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">User</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @service %>
+    </tbody>
+  </table>
+
+  <div>
+    <%= button_to "Destroy this service", @service, method: :delete, :class => "btn btn-danger"%>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div id="<%= dom_id status %>">
+  <tr>
+    <th scope="row"><%= status.id %></th>
+    <td><%= status.description %></td>
+    <td>
+      <div class="grid">
+        <%= link_to edit_status_path(status), :class => "btn btn-outline-warning btn-sm" do %>
+          <%= icon('fa-solid', 'pen')%>
+        <% end %>
+        <%= link_to status, method: :delete, :class => "btn btn-outline-danger btn-sm" do %>
+          <%= icon('fa-solid', 'trash')%>
+        <% end %>
+      </div>
+    </td>  
+  </tr>
+</div>

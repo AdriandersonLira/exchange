@@ -1,0 +1,21 @@
+<div>
+  <div id="header" class="container mt-5 d-grid">
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <h1>New status</h1>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center">
+        <%= link_to statuses_path do %>
+          <span>
+            <%= icon('fa-solid', 'arrow-left')%>
+            Back to statuses list
+            </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div id="form" class="container mt-5" style="width: 40%">
+    <%= render "form", status: @status %>
+  </div>
+</div>

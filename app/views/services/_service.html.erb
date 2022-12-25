@@ -1,0 +1,22 @@
+<div id="<%= dom_id service %>">
+  <tr>
+    <th scope="row"><%= service.id %></th>
+    <td><%= service.user_id %></td>
+    <td><%= service.description %></td>
+    <td><%= service.status_id %></td>
+    <td>
+      <div class="grid">
+        <% if can? :update, service %>
+          <%= link_to edit_service_path(service), :class => "btn btn-outline-warning btn-sm" do %>
+            <%= icon('fa-solid', 'pen')%>
+          <% end %>
+        <% end %>
+        <% if can? :destroy, service %>
+          <%= link_to service, method: :delete, :class => "btn btn-outline-danger btn-sm" do %>
+            <%= icon('fa-solid', 'trash')%>
+          <% end %>
+        <% end %>
+      </div>
+    </td>  
+  </tr>
+</div>

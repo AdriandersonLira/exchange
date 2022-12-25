@@ -1,0 +1,62 @@
+<div>
+  <div id="header" class="container mt-5">
+    <div class="row align-items-md-center">
+      <p style="color: green"><%= notice %></p>
+      <div class="col-8">  
+        <h1>Services</h1>
+      </div> 
+      <div class="col-4">
+        <div class="d-grid">
+          <div class="d-inline">
+            <div class="d-inline p-2">
+              <%= link_to new_service_path, :class => "btn btn-outline-success btn-sm" do %>
+                <span>New service <%= icon('fa-solid', 'plus')%></span>
+              <% end %>
+            </div>
+            <div class="d-inline p-2">
+              <%= link_to services_path, :class => "btn btn-outline-info btn-sm" do %>
+                <span>Reload page <%= icon('fa-solid', 'rotate-right')%></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <div id="search" class="container mt-3">
+    <div class="row align-items-md-center">
+      <div class="col-5">
+        <%= form_tag(services_path, :method => :get) do %>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><%= icon('fa-solid', 'magnifying-glass')%></span>
+            <%= text_field_tag('search', nil, :placeholder => "Enter search services description...", :class => "form-control") %>
+            <%= submit_tag('search', :class => "btn btn-secondary btn-sm") %>
+          </div>
+        <% end %>
+      </div> 
+    </div> 
+  </div> 
+
+  <div id="table services" class="container mt-5">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">User</th>
+          <th scope="col">Description</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @services.each do |service| %>
+          <%= render service %>
+        <% end %>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example" class="d-flex justify-content-end">
+      <%= paginate @services, theme: 'bootstrap-5', pagination_class: "pagination-sm" %>
+    </nav>
+  </div>
+</div>
